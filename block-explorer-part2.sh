@@ -38,7 +38,7 @@ echo "---------------"
 echo "installing insight UI"
 echo
 
-../node_modules/bitcore-node-privy/bin/bitcore-node install rmoen/insight-api-privy str4d/insight-ui-privy
+../node_modules/bitcore-node-privy/bin/bitcore-node install rmoen/insight-api-privy rmoen/insight-ui-privy
 
 
 echo "---------------"
