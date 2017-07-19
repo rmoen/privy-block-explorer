@@ -22,14 +22,14 @@ sudo apt-get -y install libzmq3-dev
 echo "---------------"
 echo "installing privy patched bitcore"
 echo 
-npm install str4d/bitcore-node-zcash
+npm install rmoen/bitcore-node-privy
 
 echo "---------------"
 echo "setting up bitcore"
 echo
 
 # setup bitcore
-./node_modules/bitcore-node-zcash/bin/bitcore-node create privy-explorer
+./node_modules/bitcore-node-privy/bin/bitcore-node create privy-explorer
 
 cd privy-explorer
 
@@ -38,7 +38,7 @@ echo "---------------"
 echo "installing insight UI"
 echo
 
-../node_modules/bitcore-node-zcash/bin/bitcore-node install str4d/insight-api-zcash str4d/insight-ui-zcash
+../node_modules/bitcore-node-privy/bin/bitcore-node install rmoen/insight-api-privy rmoen/insight-ui-privy
 
 
 echo "---------------"
@@ -52,8 +52,8 @@ cat << EOF > bitcore-node.json
   "port": 3001,
   "services": [
     "bitcoind",
-    "insight-api-zcash",
-    "insight-ui-zcash",
+    "insight-api-privy",
+    "insight-ui-privy",
     "web"
   ],
   "servicesConfig": {
@@ -84,7 +84,6 @@ rpcallowip=127.0.0.1
 rpcuser=bitcoin
 rpcpassword=local321
 uacomment=bitcore
-showmetrics=0
 
 EOF
 
