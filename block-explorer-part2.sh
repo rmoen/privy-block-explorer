@@ -22,14 +22,14 @@ sudo apt-get -y install libzmq3-dev
 echo "---------------"
 echo "installing privy patched bitcore"
 echo 
-npm install rmoen/bitcore-node-privy
+npm install str4d/bitcore-node-zcash
 
 echo "---------------"
 echo "setting up bitcore"
 echo
 
 # setup bitcore
-./node_modules/bitcore-node-privy/bin/bitcore-node create privy-explorer
+./node_modules/bitcore-node-zcash/bin/bitcore-node create privy-explorer
 
 cd privy-explorer
 
@@ -38,7 +38,7 @@ echo "---------------"
 echo "installing insight UI"
 echo
 
-../node_modules/bitcore-node-privy/bin/bitcore-node install rmoen/insight-api-privy rmoen/insight-ui-privy
+../node_modules/bitcore-node-zcash/bin/bitcore-node install str4d/insight-api-zcash str4d/insight-ui-zcash
 
 
 echo "---------------"
@@ -52,15 +52,15 @@ cat << EOF > bitcore-node.json
   "port": 3001,
   "services": [
     "bitcoind",
-    "insight-api-privy",
-    "insight-ui-privy",
+    "insight-api-zcash",
+    "insight-ui-zcash",
     "web"
   ],
   "servicesConfig": {
     "bitcoind": {
       "spawn": {
         "datadir": "./data",
-        "exec": "privy"
+        "exec": "/home/rob/privy/src/privyd"
       }
     }
   }
@@ -74,11 +74,12 @@ cat << EOF > data/privy.conf
 server=1
 whitelist=127.0.0.1
 txindex=1
+reindex=1
 addressindex=1
 timestampindex=1
 spentindex=1
-zmqpubrawtx=tcp://127.0.0.1:8888
-zmqpubhashblock=tcp://127.0.0.1:8888
+zmqpubrawtx=tcp://127.0.0.1:28332
+zmqpubhashblock=tcp://127.0.0.1:28332
 rpcallowip=127.0.0.1
 rpcuser=bitcoin
 rpcpassword=local321
